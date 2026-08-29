@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="group_wiki_admin" model="res.groups">
+        <field name="name">Wiki: Admin</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <record id="group_wiki_socios" model="res.groups">
+        <field name="name">Wiki: Socios</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <record id="group_wiki_oficina" model="res.groups">
+        <field name="name">Wiki: Oficina</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <record id="group_wiki_almacen" model="res.groups">
+        <field name="name">Wiki: Almacen</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <record id="group_wiki_trabajadores" model="res.groups">
+        <field name="name">Wiki: Trabajadores</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <record id="group_wiki_clientes" model="res.groups">
+        <field name="name">Wiki: Clientes</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+    </record>
+
+    <!-- Admin: acceso total -->
+    <record id="access_wiki_article_admin" model="ir.model.access">
+        <field name="name">wiki.article.admin</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="group_id" ref="group_wiki_admin"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="access_wiki_category_admin" model="ir.model.access">
+        <field name="name">wiki.category.admin</field>
+        <field name="model_id" ref="model_wiki_category"/>
+        <field name="group_id" ref="group_wiki_admin"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="access_wiki_tag_admin" model="ir.model.access">
+        <field name="name">wiki.tag.admin</field>
+        <field name="model_id" ref="model_wiki_tag"/>
+        <field name="group_id" ref="group_wiki_admin"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <!-- Socios: acceso total -->
+    <record id="access_wiki_article_socios" model="ir.model.access">
+        <field name="name">wiki.article.socios</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="group_id" ref="group_wiki_socios"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="access_wiki_category_socios" model="ir.model.access">
+        <field name="name">wiki.category.socios</field>
+        <field name="model_id" ref="model_wiki_category"/>
+        <field name="group_id" ref="group_wiki_socios"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="access_wiki_tag_socios" model="ir.model.access">
+        <field name="name">wiki.tag.socios</field>
+        <field name="model_id" ref="model_wiki_tag"/>
+        <field name="group_id" ref="group_wiki_socios"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <!-- Oficina / Almacen / Trabajadores: crear y editar en su categoria -->
+    <record id="access_wiki_article_oficina" model="ir.model.access">
+        <field name="name">wiki.article.oficina</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="group_id" ref="group_wiki_oficina"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="access_wiki_article_almacen" model="ir.model.access">
+        <field name="name">wiki.article.almacen</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="group_id" ref="group_wiki_almacen"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="access_wiki_article_trabajadores" model="ir.model.access">
+        <field name="name">wiki.article.trabajadores</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="group_id" ref="group_wiki_trabajadores"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <!-- Clientes: solo lectura -->
+    <record id="access_wiki_article_clientes" model="ir.model.access">
+        <field name="name">wiki.article.clientes</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="group_id" ref="group_wiki_clientes"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+
+
+    <!-- Lectura de categorias y etiquetas para todos los grupos wiki -->
+    <record id="access_wiki_category_oficina" model="ir.model.access">
+        <field name="name">wiki.category.oficina</field>
+        <field name="model_id" ref="model_wiki_category"/>
+        <field name="group_id" ref="group_wiki_oficina"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <record id="access_wiki_tag_oficina" model="ir.model.access">
+        <field name="name">wiki.tag.oficina</field>
+        <field name="model_id" ref="model_wiki_tag"/>
+        <field name="group_id" ref="group_wiki_oficina"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <record id="access_wiki_category_almacen" model="ir.model.access">
+        <field name="name">wiki.category.almacen</field>
+        <field name="model_id" ref="model_wiki_category"/>
+        <field name="group_id" ref="group_wiki_almacen"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <record id="access_wiki_tag_almacen" model="ir.model.access">
+        <field name="name">wiki.tag.almacen</field>
+        <field name="model_id" ref="model_wiki_tag"/>
+        <field name="group_id" ref="group_wiki_almacen"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <record id="access_wiki_category_trabajadores" model="ir.model.access">
+        <field name="name">wiki.category.trabajadores</field>
+        <field name="model_id" ref="model_wiki_category"/>
+        <field name="group_id" ref="group_wiki_trabajadores"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <record id="access_wiki_tag_trabajadores" model="ir.model.access">
+        <field name="name">wiki.tag.trabajadores</field>
+        <field name="model_id" ref="model_wiki_tag"/>
+        <field name="group_id" ref="group_wiki_trabajadores"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <record id="access_wiki_category_clientes" model="ir.model.access">
+        <field name="name">wiki.category.clientes</field>
+        <field name="model_id" ref="model_wiki_category"/>
+        <field name="group_id" ref="group_wiki_clientes"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <record id="access_wiki_tag_clientes" model="ir.model.access">
+        <field name="name">wiki.tag.clientes</field>
+        <field name="model_id" ref="model_wiki_tag"/>
+        <field name="group_id" ref="group_wiki_clientes"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <!-- Reglas: cada grupo solo ve su categoria (los publicos se ven) -->
+    <record id="rule_wiki_article_admin" model="ir.rule">
+        <field name="name">Wiki Article: Admin ve todo</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="groups" eval="[(4, ref('wiki_interna.group_wiki_admin'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+    <record id="rule_wiki_article_socios" model="ir.rule">
+        <field name="name">Wiki Article: Socios ve todo</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="groups" eval="[(4, ref('wiki_interna.group_wiki_socios'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+    </record>
+        <record id="rule_wiki_article_oficina" model="ir.rule">
+        <field name="name">Wiki Article: Oficina (lectura)</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="groups" eval="[(4, ref('wiki_interna.group_wiki_oficina'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="domain_force">['|', ('is_public', '=', True), ('category_id.name', '=', 'Oficina')]</field>
+    </record>
+    <record id="rule_wiki_article_oficina_write" model="ir.rule">
+        <field name="name">Wiki Article: Oficina (edicion)</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="groups" eval="[(4, ref('wiki_interna.group_wiki_oficina'))]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="domain_force">['&amp;', ('category_id.name', '=', 'Oficina'), ('is_locked', '=', False)]</field>
+    </record>
+        <record id="rule_wiki_article_almacen" model="ir.rule">
+        <field name="name">Wiki Article: Almacen (lectura)</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="groups" eval="[(4, ref('wiki_interna.group_wiki_almacen'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="domain_force">['|', ('is_public', '=', True), ('category_id.name', '=', 'Almacen')]</field>
+    </record>
+    <record id="rule_wiki_article_almacen_write" model="ir.rule">
+        <field name="name">Wiki Article: Almacen (edicion)</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="groups" eval="[(4, ref('wiki_interna.group_wiki_almacen'))]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="domain_force">['&amp;', ('category_id.name', '=', 'Almacen'), ('is_locked', '=', False)]</field>
+    </record>
+        <record id="rule_wiki_article_trabajadores" model="ir.rule">
+        <field name="name">Wiki Article: Trabajadores (lectura)</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="groups" eval="[(4, ref('wiki_interna.group_wiki_trabajadores'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+        <field name="domain_force">['|', ('is_public', '=', True), ('category_id.name', '=', 'Trabajadores')]</field>
+    </record>
+    <record id="rule_wiki_article_trabajadores_write" model="ir.rule">
+        <field name="name">Wiki Article: Trabajadores (edicion)</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="groups" eval="[(4, ref('wiki_interna.group_wiki_trabajadores'))]"/>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+        <field name="domain_force">['&amp;', ('category_id.name', '=', 'Trabajadores'), ('is_locked', '=', False)]</field>
+    </record>
+    <record id="rule_wiki_article_clientes" model="ir.rule">
+        <field name="name">Wiki Article: Clientes</field>
+        <field name="model_id" ref="model_wiki_article"/>
+        <field name="groups" eval="[(4, ref('wiki_interna.group_wiki_clientes'))]"/>
+        <field name="domain_force">['|', ('is_public', '=', True), ('category_id.name', '=', 'Clientes')]</field>
+    </record>
+
+    <!-- Secciones: Admin/Socios gestionan, resto solo lectura -->
+    <record id="access_wiki_section_admin" model="ir.model.access">
+        <field name="name">wiki.section.admin</field>
+        <field name="model_id" ref="model_wiki_section"/>
+        <field name="group_id" ref="group_wiki_admin"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="access_wiki_section_socios" model="ir.model.access">
+        <field name="name">wiki.section.socios</field>
+        <field name="model_id" ref="model_wiki_section"/>
+        <field name="group_id" ref="group_wiki_socios"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+    <record id="access_wiki_section_oficina" model="ir.model.access">
+        <field name="name">wiki.section.oficina</field>
+        <field name="model_id" ref="model_wiki_section"/>
+        <field name="group_id" ref="group_wiki_oficina"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <record id="access_wiki_section_almacen" model="ir.model.access">
+        <field name="name">wiki.section.almacen</field>
+        <field name="model_id" ref="model_wiki_section"/>
+        <field name="group_id" ref="group_wiki_almacen"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <record id="access_wiki_section_trabajadores" model="ir.model.access">
+        <field name="name">wiki.section.trabajadores</field>
+        <field name="model_id" ref="model_wiki_section"/>
+        <field name="group_id" ref="group_wiki_trabajadores"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+    <record id="access_wiki_section_clientes" model="ir.model.access">
+        <field name="name">wiki.section.clientes</field>
+        <field name="model_id" ref="model_wiki_section"/>
+        <field name="group_id" ref="group_wiki_clientes"/>
+        <field name="perm_read" eval="True"/>
+    </record>
+</odoo>
